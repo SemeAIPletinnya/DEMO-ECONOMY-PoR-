@@ -35,7 +35,10 @@ jobs:
 
       - name: Generate Build Provenance
         # Provenance runs only on trusted pushes to main.
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.outputs_check.outputs.has_output == 'true'
+        if: >-
+          github.event_name == 'push' &&
+          github.ref == 'refs/heads/main' &&
+          steps.outputs_check.outputs.has_output == 'true'
         uses: actions/attest-build-provenance@v1
         with:
           subject-path: "output/**"
