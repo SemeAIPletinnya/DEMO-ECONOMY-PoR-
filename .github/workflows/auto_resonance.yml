@@ -24,9 +24,20 @@ jobs:
       - name: Run Resonant Stability Field
         run: echo "Run Resonant Stability Field"
 
+      - name: Check outputs exist
+        id: outputs_check
+        run: |
+          if compgen -G "output/**" > /dev/null; then
+            echo "has_output=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_output=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Generate Build Provenance
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.outputs_check.outputs.has_output == 'true'
         uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: "output/**"
 
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
