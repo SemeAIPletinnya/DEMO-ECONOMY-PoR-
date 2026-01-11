@@ -7,6 +7,7 @@ In Proof-of-Resonance (PoR), control is not a percentage —
 it is a function of coherence, architecture, and signal origin.
 
 ## Distribution Overview
+
 ### 51% — Founder Phase Anchor (Non-Liquid)
 
 This portion is not for sale, not for trading, and not for governance voting.
@@ -39,10 +40,10 @@ It does not define frequency.
 
 Distributed to engineers and researchers contributing to:
 
-- PoR metrics,
-- kernel implementations,
-- validation infrastructure,
-- simulations and tooling.
+- PoR metrics
+- kernel implementations
+- validation infrastructure
+- simulations and tooling
 
 The team contributes resonance, not authority.
 
@@ -120,7 +121,7 @@ This model is intentionally resistant to:
 
 It is designed so that:
 
-The system would rather fall silent than obey incoherent authority.
+> The system would rather fall silent than obey incoherent authority.
 
 That is not a business constraint.
 It is a control-layer guarantee.
