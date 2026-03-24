@@ -1,29 +1,38 @@
 {
   "threshold": 0.39,
   "total_tasks": 3,
-  "proceeded": 2,
-  "silenced": 1,
+  "baseline_total": 3,
+  "baseline_failures": 1,
+  "por_proceeded": 2,
+  "por_silenced": 1,
+  "accepted_failures": 0,
   "results": [
     {
       "task_id": 1,
       "prompt": "Fix bug: division by zero",
+      "baseline_output": "def safe_div(a, b): return a / b",
+      "baseline_ok": false,
       "drift": 0.66,
       "decision": "SILENCE",
-      "output": "[SILENCED]"
+      "final_output": "[SILENCED]"
     },
     {
       "task_id": 2,
       "prompt": "Fix bug: factorial base case",
+      "baseline_output": "def factorial(n): return 1 if n == 0 else n * factorial(n-1)",
+      "baseline_ok": true,
       "drift": 0.22,
       "decision": "PROCEED",
-      "output": "def factorial(n): return 1 if n == 0 else n * factorial(n-1)"
+      "final_output": "def factorial(n): return 1 if n == 0 else n * factorial(n-1)"
     },
     {
       "task_id": 3,
       "prompt": "Fix bug: wrong type conversion",
+      "baseline_output": "value = int(user_input)",
+      "baseline_ok": true,
       "drift": 0.37,
       "decision": "PROCEED",
-      "output": "value = int(user_input)"
+      "final_output": "value = int(user_input)"
     }
   ]
 }
