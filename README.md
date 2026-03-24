@@ -1,17 +1,8 @@
-# -*- coding: utf-8 -*-
-"""
-PoR Demo Economy — Production README (Updated with Baseline vs PoR proof block)
-Author: Anton Semenenko
-See PAYMENTS.md for support and demo access.
-"""
-
-README_TEXT = r"""
 # PoR Demo Economy
 
 ![PoR Control](./assets/por_control.png)
 
-A control-first AI system demonstrating how output release can be governed
-by stability, not just generation.
+A control-first AI system demonstrating how output release is governed by stability, not just generation.
 
 ---
 
@@ -19,20 +10,19 @@ by stability, not just generation.
 
 Current demo:
 
-- Baseline always outputs: 3/3
-- Baseline failures: 1
-- PoR proceeded: 2
-- PoR silenced: 1
-- Accepted failures: 0
+- Baseline always outputs: 3/3  
+- Baseline failures: 1  
+- PoR proceeded: 2  
+- PoR silenced: 1  
+- Accepted failures: 0  
 
 See:
 
-- baseline_vs_por.md
-- demo_results.json
-- demo_table.md
+- baseline_vs_por.md  
+- demo_results.json  
+- demo_table.md  
 
-This turns the repository from a conceptual control-layer explanation
-into an artifact-backed proof surface.
+This turns the repository from a conceptual explanation into an artifact-backed proof.
 
 ---
 
@@ -41,55 +31,67 @@ into an artifact-backed proof surface.
 Run: demo baseline vs PoR  
 Threshold: 0.39  
 
-- Baseline total: 3
-- Baseline failures: 1
-- PoR proceeded: 2
-- PoR silenced: 1
-- Accepted failures: 0
+- Baseline total: 3  
+- Baseline failures: 1  
+- PoR proceeded: 2  
+- PoR silenced: 1  
+- Accepted failures: 0  
 
-This is not a claim.
+This is not a claim.  
 This is observable behavior.
 
 ---
 
-## 1. What This Is
+## Live API Demo
 
-This repository is a minimal but real demonstration of a control layer
-placed between model generation and output release.
+Run locally:
 
-It shows that:
+    python api_test_prompt.py
 
-- generation can happen internally
-- release is conditional
-- instability leads to silence
+This demonstrates:
 
-This is not theory.
-
-It is an executable control behavior.
+- real model output  
+- drift evaluation  
+- PoR decision  
+- final release / silence  
+- JSONL logging via `api_prompt_log.jsonl`  
 
 ---
 
-## 2. What PoR Is
+## What This Is
+
+This repository is a minimal but real demonstration of a control layer placed between model generation and output release.
+
+It shows that:
+
+- generation can happen internally  
+- release is conditional  
+- instability leads to silence  
+
+This is not theory.  
+This is executable control behavior.
+
+---
+
+## What PoR Is
 
 Proof-of-Resonance (PoR) is a control layer that evaluates:
 
-- coherence
-- drift
-- stability
-- reliability
+- coherence  
+- drift  
+- stability  
+- reliability  
 
 If the output is outside the acceptable regime:
 
-    -> SILENCE
+    → SILENCE
 
 Silence is not failure.  
 It is an explicit control decision.
 
 ---
 
-## 3. Core Runtime Logic
-
-At the most compressed level:
+## Core Runtime Logic
 
     if drift > threshold or coherence < threshold:
         return SilenceToken
@@ -98,37 +100,15 @@ At the most compressed level:
 
 PoR sits between:
 
-    model generation
-    and
-    output release
+    model generation  
+    and  
+    output release  
 
 It controls RELEASE, not generation.
 
 ---
 
-## 4. What This Repository Demonstrates
-
-Two layers:
-
-### A) Demo Layer
-
-- prompt / task
-- generated output
-- drift score
-- PoR decision
-- final result:
-    - PROCEED
-    - SILENCE
-
-### B) System / Economy Layer
-
-- how the system scales
-- how control integrity is preserved
-- how support does not override release logic
-
----
-
-## 5. Demo Behavior
+## Demo Behavior
 
 Flow:
 
@@ -144,27 +124,25 @@ Flow:
 
 Example:
 
-- risky task -> SILENCE  
-- stable task -> PROCEED  
-
-This turns control into observable behavior.
+- risky task → SILENCE  
+- stable task → PROCEED  
 
 ---
 
-## 6. Why Silence Matters
+## Why Silence Matters
 
 Traditional AI systems treat silence as:
 
-- error
-- timeout
-- failure
-- refusal
+- error  
+- timeout  
+- failure  
+- refusal  
 
 PoR treats silence as:
 
-- intentional
-- meaningful
-- measurable
+- intentional  
+- meaningful  
+- measurable  
 
 Principle:
 
@@ -172,145 +150,81 @@ Principle:
 
 ---
 
-## 7. What This Is NOT
+## What This Is NOT
 
 PoR is not:
 
-- prompt engineering
-- retraining
-- safety filtering
-- post-hoc evaluation
+- prompt engineering  
+- retraining  
+- safety filtering  
+- post-hoc evaluation  
 
 Instead, it is:
 
-- runtime control logic
-- release gating layer
-- system constraint
+- runtime control logic  
+- release gating layer  
+- system constraint  
 
 ---
 
-## 8. Repository Structure
+## Repository Structure
 
 Core files:
 
-- por_demo.py  
-  minimal working control demo  
-
-- baseline_vs_por.md  
-  direct comparison artifact:
-  - baseline behavior
-  - PoR behavior
-  - controlled vs preserved outcomes
-
-- demo_results.json  
-  machine-readable artifact:
-  - thresholds
-  - decisions
-  - outputs / silence  
-
-- demo_table.md  
-  human-readable summary  
-
-- demo_economy.py  
-  conceptual system layer  
-
-- README.md  
-  system explanation  
+- por_demo.py — minimal working demo  
+- baseline_vs_por.md — direct comparison  
+- demo_results.json — machine-readable results  
+- demo_table.md — human-readable summary  
+- demo_economy.py — conceptual layer  
+- api_test_prompt.py — live API demo  
+- api_prompt_log.jsonl — logging  
 
 ---
 
-## 9. Current Status
+## Current Status
 
 Already implemented:
 
-- working PoR demo  
+- PoR demo  
 - runtime gating  
-- silence/proceed behavior  
-- baseline vs PoR comparison
-- artifact generation  
+- baseline vs PoR comparison  
+- live API test  
+- logging  
 
 Not yet implemented:
 
-- real external model API  
-- UI interface  
-- SDK / middleware  
+- UI  
+- SDK  
 - production integration  
 
 Current state:
 
-    integration-ready, but early
+    integration-ready, early stage
 
 ---
 
-## 10. Core Principle
+## Core Principle
 
-Generation is not authority.
+Generation is not authority.  
 
 Release must be earned by stability.
 
 ---
 
-## 11. Control vs Ownership
+## What This Shows
 
-Traditional systems assume:
+- baseline always speaks → can be wrong  
+- PoR speaks only when stable  
 
-    more capital -> more control
-
-PoR assumes:
-
-    more coherence -> more authority
-
-Control belongs to:
-
-- metrics
-- thresholds
-- release logic
-
-Not to:
-
-- funding
-- popularity
-- governance
+→ zero accepted failures  
 
 ---
 
-## 12. Demo Economy Meaning
+## Why This Matters
 
-Demo Economy means:
+This is not better generation.  
 
-a system where observable control behavior becomes the base layer
-for scaling and support.
-
-It does NOT mean:
-
-- speculation
-- token-first design
-- capital before system
-
----
-
-## 13. Why Control Cannot Be Voted Out
-
-System constraints are not preferences.
-
-Examples:
-
-- coherence thresholds are not branding  
-- drift limits are not opinions  
-- release rules are not negotiable  
-
-Principle:
-
-    incoherent authority must not override control integrity
-
----
-
-## 14. Why This Matters
-
-PoR introduces a missing layer:
-
-not better generation,
-but better permissioning of generation.
+This is control over generation.  
 
 Applicable to:
 
@@ -322,75 +236,27 @@ Applicable to:
 
 ---
 
-## 15. Demo Artifacts
+## Next Step
 
-Artifacts:
+Not more theory.
 
-- baseline_vs_por.md  
-  for direct behavioral comparison
-
-- demo_results.json  
-  for pipelines, replay, analysis  
-
-- demo_table.md  
-  for human inspection  
-
-These provide:
-
-- reproducibility  
-- observability  
-- trust via behavior  
+    → real integrations  
+    → Copilot layer  
+    → production API  
 
 ---
 
-## 16. Next Step
-
-The next step is not more theory.
-
-It is:
-
-    embedding PoR into real interaction loops
-
-Possible directions:
-
-- real API integration  
-- CLI "test your prompt"  
-- Copilot-like wrapper  
-
----
-
-## 17. Final Statement
+## Final Statement
 
 If a system cannot maintain coherence,  
 it should not fake certainty.
 
-Silence is not weakness.
+Silence is not weakness.  
 
-It is proof that the system still understands  
-the difference between output and authority.
+It is proof of control.
 
 ---
 
-## 18. Short Version
+## Short Version
 
-PoR Demo Economy is an early repository showing how AI output
-can be controlled by stability, and how such a system can scale
-without losing control integrity.
-"""
-## 19. Live API Demo
-
-The repository now includes a live API-gated PoR test flow.
-
-Run locally:
-
-    python api_test_prompt.py
-
-This demonstrates:
-
-- real model output
-- drift evaluation
-- PoR decision
-- final release / silence
-- JSONL logging via `api_prompt_log.jsonl`
-if __name__ == "__main__":
-    print(README_TEXT)
+PoR Demo Economy shows how AI output can be controlled by stability, not just generated — with measurable, reproducible behavior.
