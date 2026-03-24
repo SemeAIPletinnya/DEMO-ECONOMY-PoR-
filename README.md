@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-PoR Demo Economy — Production README (Stable, Extended)
+PoR Demo Economy — Production README (Updated with Baseline vs PoR proof block)
 Author: Anton Semenenko
+See PAYMENTS.md for support and demo access.
 """
 
 README_TEXT = r"""
@@ -14,17 +15,37 @@ by stability, not just generation.
 
 ---
 
+## Baseline vs PoR
+
+Current demo:
+
+- Baseline always outputs: 3/3
+- Baseline failures: 1
+- PoR proceeded: 2
+- PoR silenced: 1
+- Accepted failures: 0
+
+See:
+
+- baseline_vs_por.md
+- demo_results.json
+- demo_table.md
+
+This turns the repository from a conceptual control-layer explanation
+into an artifact-backed proof surface.
+
+---
+
 ## Live Demo Evidence
 
-Run: #6 — 1000 tasks  
+Run: demo baseline vs PoR  
 Threshold: 0.39  
 
-- Silence rate: (your value)
-- Accepted precision: 100%
-- Failures: 0
-
-→ See: demo_table.md  
-→ See: demo_results.json  
+- Baseline total: 3
+- Baseline failures: 1
+- PoR proceeded: 2
+- PoR silenced: 1
+- Accepted failures: 0
 
 This is not a claim.
 This is observable behavior.
@@ -175,6 +196,12 @@ Core files:
 - por_demo.py  
   minimal working control demo  
 
+- baseline_vs_por.md  
+  direct comparison artifact:
+  - baseline behavior
+  - PoR behavior
+  - controlled vs preserved outcomes
+
 - demo_results.json  
   machine-readable artifact:
   - thresholds
@@ -199,6 +226,7 @@ Already implemented:
 - working PoR demo  
 - runtime gating  
 - silence/proceed behavior  
+- baseline vs PoR comparison
 - artifact generation  
 
 Not yet implemented:
@@ -297,6 +325,9 @@ Applicable to:
 ## 15. Demo Artifacts
 
 Artifacts:
+
+- baseline_vs_por.md  
+  for direct behavioral comparison
 
 - demo_results.json  
   for pipelines, replay, analysis  
