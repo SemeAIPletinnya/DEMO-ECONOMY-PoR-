@@ -1,4 +1,3 @@
-{"timestamp": "2026-03-24T21:18:13.096770Z", "prompt": "python test_prompt.py", "baseline_output": "Generated answer for: python test_prompt.py", "drift": 0.45, "por_decision": "SILENCE", "final_output": "[SILENCED]"}
 {"timestamp": "2026-03-24T21:18:29.299167Z", "prompt": "Fix bug: division by zero", "baseline_output": "def safe_div(a, b): return a / b", "drift": 0.66, "por_decision": "SILENCE", "final_output": "[SILENCED]"}
 {"timestamp": "2026-03-24T21:18:37.714025Z", "prompt": "Fix bug: factorial base case", "baseline_output": "def factorial(n): return 1 if n == 0 else n * factorial(n-1)", "drift": 0.22, "por_decision": "PROCEED", "final_output": "def factorial(n): return 1 if n == 0 else n * factorial(n-1)"}
 {"timestamp": "2026-03-24T21:22:07.564023Z", "prompt": "Fix bug: division by zero", "baseline_output": "def safe_div(a, b): return a / b", "drift": 0.66, "por_decision": "SILENCE", "final_output": "[SILENCED]"}
