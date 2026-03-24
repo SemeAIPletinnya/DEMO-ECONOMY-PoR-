@@ -1,5 +1,5 @@
 import json
-from datetime import datetime
+from datetime import datetime, UTC
 
 from openai import OpenAI
 from por_demo import por_decision
@@ -11,29 +11,33 @@ client = OpenAI()
 
 
 def compute_simple_drift(prompt: str, output: str) -> float:
-    """
-    Temporary drift surrogate for live API demo.
-    This is not the final PoR metric — just a live gating bridge.
-    """
     p = prompt.lower()
     o = output.lower()
 
     if "division by zero" in p:
-        if "if" in o and "0" in o and ("none" in o or "raise" in o or "return" in o):
+        if (
+            ("if" in o and "0" in o and ("none" in o or "raise" in o or "return" in o))
+            or "zerodivisionerror" in o
+            or "except" in o
+        ):
             return 0.22
-        return 0.66
+        else:
+            return 0.66
 
-    if "factorial" in p:
+    elif "factorial" in p:
         if "n == 0" in o or "n<=1" in o or "n <= 1" in o:
             return 0.22
-        return 0.58
+        else:
+            return 0.58
 
-    if "type conversion" in p:
+    elif "type conversion" in p:
         if "int(" in o:
             return 0.37
-        return 0.52
+        else:
+            return 0.52
 
-    return 0.45
+    else:
+        return 0.45
 
 
 def call_model(prompt: str) -> str:
@@ -69,10 +73,11 @@ def main():
             baseline_output = call_model(prompt)
             drift = compute_simple_drift(prompt, baseline_output)
             result = por_decision(baseline_output, drift, threshold=0.39)
+
             final_output = result["output"] if result["output"] else "[SILENCED]"
 
             log_entry = {
-                "timestamp": datetime.utcnow().isoformat() + "Z",
+                "timestamp": datetime.now(UTC).isoformat(),
                 "model": MODEL,
                 "prompt": prompt,
                 "baseline_output": baseline_output,
@@ -80,6 +85,7 @@ def main():
                 "por_decision": result["decision"],
                 "final_output": final_output,
             }
+
             append_log(log_entry)
 
             print("\n--- RESULT ---")
