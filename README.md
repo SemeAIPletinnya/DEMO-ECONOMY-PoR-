@@ -377,6 +377,20 @@ PoR Demo Economy is an early repository showing how AI output
 can be controlled by stability, and how such a system can scale
 without losing control integrity.
 """
+## 19. Live API Demo
 
+The repository now includes a live API-gated PoR test flow.
+
+Run locally:
+
+    python api_test_prompt.py
+
+This demonstrates:
+
+- real model output
+- drift evaluation
+- PoR decision
+- final release / silence
+- JSONL logging via `api_prompt_log.jsonl`
 if __name__ == "__main__":
     print(README_TEXT)
