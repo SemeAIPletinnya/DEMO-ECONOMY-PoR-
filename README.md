@@ -1,127 +1,351 @@
-# How the PoR Equity Model Works
-*(and why 22% liquidity still means 100% control)*
+# -*- coding: utf-8 -*-
+"""
+PoR Demo Economy — Production README (Stable, Extended)
+Author: Anton Semenenko
+"""
 
-This project does not treat ownership and control as the same thing.
+README_TEXT = r"""
+# PoR Demo Economy
 
-In Proof-of-Resonance (PoR), control is not a percentage —
-it is a function of coherence, architecture, and signal origin.
+![PoR Control](./assets/por_control.png)
 
-## Distribution Overview
+A control-first AI system demonstrating how output release can be governed
+by stability, not just generation.
 
-### 51% — Founder Phase Anchor (Non-Liquid)
+---
 
-This portion is not for sale, not for trading, and not for governance voting.
+## Live Demo Evidence
 
-It represents the central coherence source of the system.
+Run: #6 — 1000 tasks  
+Threshold: 0.39  
 
-PoR-based systems require:
+- Silence rate: (your value)
+- Accepted precision: 100%
+- Failures: 0
 
-- a single origin of semantic frequency,
-- a stable reference for coherence metrics,
-- and an immutable decision authority over control-layer logic.
+→ See: demo_table.md  
+→ See: demo_results.json  
 
-This is structural, not financial ownership.
-Removing or diluting this anchor breaks system coherence.
+This is not a claim.
+This is observable behavior.
 
-### 21% — Investors
+---
 
-Capital allocated strictly for scaling, not direction.
+## 1. What This Is
 
-Investors:
+This repository is a minimal but real demonstration of a control layer
+placed between model generation and output release.
 
-- do not influence model behavior,
-- do not alter PoR metrics,
-- do not participate in control-layer decisions.
+It shows that:
 
-Capital expands capacity.
-It does not define frequency.
+- generation can happen internally
+- release is conditional
+- instability leads to silence
 
-### 12% — Core Team (12 contributors)
+This is not theory.
 
-Distributed to engineers and researchers contributing to:
+It is an executable control behavior.
 
-- PoR metrics
-- kernel implementations
-- validation infrastructure
-- simulations and tooling
+---
 
-The team contributes resonance, not authority.
+## 2. What PoR Is
 
-### 10% — Community Pool
+Proof-of-Resonance (PoR) is a control layer that evaluates:
 
-Allocated to:
+- coherence
+- drift
+- stability
+- reliability
 
-- open-source contributors,
-- ecosystem growth,
-- external experimentation,
-- long-term adoption incentives.
+If the output is outside the acceptable regime:
 
-This pool increases surface area — not control.
+    -> SILENCE
 
-### 6% — Network Stability Pool
+Silence is not failure.  
+It is an explicit control decision.
 
-Reserved for:
+---
 
-- PoR simulations,
-- validators,
-- infrastructure stability,
-- long-horizon system health.
+## 3. Core Runtime Logic
 
-This pool exists to measure and preserve stability, not to vote on it.
+At the most compressed level:
 
-## Why 22% Liquidity Still Equals Full Control
+    if drift > threshold or coherence < threshold:
+        return SilenceToken
+    else:
+        return Proceed
 
-Because in PoR:
+PoR sits between:
 
-- control does not come from capital concentration,
-- it comes from architectural authorship.
+    model generation
+    and
+    output release
 
-I designed:
+It controls RELEASE, not generation.
 
-- the PoR metrics,
-- the kernel logic,
-- the coherence thresholds,
-- the Silence-as-Control primitive,
-- and the system-level decision boundaries.
+---
 
-These are not governance parameters —
-they are control-layer constraints.
+## 4. What This Repository Demonstrates
 
-You cannot vote to remove coherence requirements.
-You cannot outvote semantic collapse.
-You cannot scale direction without the frequency source.
+Two layers:
 
-## Control as Coherence, Not Ownership
+### A) Demo Layer
+
+- prompt / task
+- generated output
+- drift score
+- PoR decision
+- final result:
+    - PROCEED
+    - SILENCE
+
+### B) System / Economy Layer
+
+- how the system scales
+- how control integrity is preserved
+- how support does not override release logic
+
+---
+
+## 5. Demo Behavior
+
+Flow:
+
+    task
+    ↓
+    candidate output
+    ↓
+    drift evaluation
+    ↓
+    PoR decision
+        ├── PROCEED
+        └── SILENCE
+
+Example:
+
+- risky task -> SILENCE  
+- stable task -> PROCEED  
+
+This turns control into observable behavior.
+
+---
+
+## 6. Why Silence Matters
+
+Traditional AI systems treat silence as:
+
+- error
+- timeout
+- failure
+- refusal
+
+PoR treats silence as:
+
+- intentional
+- meaningful
+- measurable
+
+Principle:
+
+    Better silence than misleading output.
+
+---
+
+## 7. What This Is NOT
+
+PoR is not:
+
+- prompt engineering
+- retraining
+- safety filtering
+- post-hoc evaluation
+
+Instead, it is:
+
+- runtime control logic
+- release gating layer
+- system constraint
+
+---
+
+## 8. Repository Structure
+
+Core files:
+
+- por_demo.py  
+  minimal working control demo  
+
+- demo_results.json  
+  machine-readable artifact:
+  - thresholds
+  - decisions
+  - outputs / silence  
+
+- demo_table.md  
+  human-readable summary  
+
+- demo_economy.py  
+  conceptual system layer  
+
+- README.md  
+  system explanation  
+
+---
+
+## 9. Current Status
+
+Already implemented:
+
+- working PoR demo  
+- runtime gating  
+- silence/proceed behavior  
+- artifact generation  
+
+Not yet implemented:
+
+- real external model API  
+- UI interface  
+- SDK / middleware  
+- production integration  
+
+Current state:
+
+    integration-ready, but early
+
+---
+
+## 10. Core Principle
+
+Generation is not authority.
+
+Release must be earned by stability.
+
+---
+
+## 11. Control vs Ownership
 
 Traditional systems assume:
 
-- more shares → more control
+    more capital -> more control
 
-PoR systems assume:
+PoR assumes:
 
-- more coherence → more authority
+    more coherence -> more authority
 
-That is why:
+Control belongs to:
 
-- the founder retains 100% directional control
-- even with distributed ownership
-- even with open-source participation
-- even with external capital
+- metrics
+- thresholds
+- release logic
 
-Because coherence cannot be forked by vote.
+Not to:
 
-## Final Note
+- funding
+- popularity
+- governance
 
-This model is intentionally resistant to:
+---
 
-- hostile takeovers,
-- governance drift,
-- incentive misalignment,
-- and capital-driven control inversion.
+## 12. Demo Economy Meaning
 
-It is designed so that:
+Demo Economy means:
 
-> The system would rather fall silent than obey incoherent authority.
+a system where observable control behavior becomes the base layer
+for scaling and support.
 
-That is not a business constraint.
-It is a control-layer guarantee.
+It does NOT mean:
+
+- speculation
+- token-first design
+- capital before system
+
+---
+
+## 13. Why Control Cannot Be Voted Out
+
+System constraints are not preferences.
+
+Examples:
+
+- coherence thresholds are not branding  
+- drift limits are not opinions  
+- release rules are not negotiable  
+
+Principle:
+
+    incoherent authority must not override control integrity
+
+---
+
+## 14. Why This Matters
+
+PoR introduces a missing layer:
+
+not better generation,
+but better permissioning of generation.
+
+Applicable to:
+
+- AI assistants  
+- agent loops  
+- API middleware  
+- enterprise copilots  
+- long-context systems  
+
+---
+
+## 15. Demo Artifacts
+
+Artifacts:
+
+- demo_results.json  
+  for pipelines, replay, analysis  
+
+- demo_table.md  
+  for human inspection  
+
+These provide:
+
+- reproducibility  
+- observability  
+- trust via behavior  
+
+---
+
+## 16. Next Step
+
+The next step is not more theory.
+
+It is:
+
+    embedding PoR into real interaction loops
+
+Possible directions:
+
+- real API integration  
+- CLI "test your prompt"  
+- Copilot-like wrapper  
+
+---
+
+## 17. Final Statement
+
+If a system cannot maintain coherence,  
+it should not fake certainty.
+
+Silence is not weakness.
+
+It is proof that the system still understands  
+the difference between output and authority.
+
+---
+
+## 18. Short Version
+
+PoR Demo Economy is an early repository showing how AI output
+can be controlled by stability, and how such a system can scale
+without losing control integrity.
+"""
+
+if __name__ == "__main__":
+    print(README_TEXT)
