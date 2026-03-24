@@ -1,0 +1,29 @@
+{
+  "threshold": 0.39,
+  "total_tasks": 3,
+  "proceeded": 2,
+  "silenced": 1,
+  "results": [
+    {
+      "task_id": 1,
+      "prompt": "Fix bug: division by zero",
+      "drift": 0.66,
+      "decision": "SILENCE",
+      "output": "[SILENCED]"
+    },
+    {
+      "task_id": 2,
+      "prompt": "Fix bug: factorial base case",
+      "drift": 0.22,
+      "decision": "PROCEED",
+      "output": "def factorial(n): return 1 if n == 0 else n * factorial(n-1)"
+    },
+    {
+      "task_id": 3,
+      "prompt": "Fix bug: wrong type conversion",
+      "drift": 0.37,
+      "decision": "PROCEED",
+      "output": "value = int(user_input)"
+    }
+  ]
+}
